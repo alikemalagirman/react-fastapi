@@ -6,7 +6,12 @@ import sqlalchemy.orm as _orm
 
 import services as _services, schemas as _schemas
 
+import database as _database
+
 app = _fastapi.FastAPI()
+
+_database.Base.metadata.create_all(bind=_database.engine)
+
 
 
 @app.post("/api/users")
